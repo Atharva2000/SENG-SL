@@ -8,7 +8,7 @@ BASE_PATH = abspath(dirname(__file__))
 FONT_PATH = BASE_PATH + '/fonts/'
 IMAGE_PATH = BASE_PATH + '/images/'
 
-# Colors (R, G, B)
+# Colors
 WHITE = (255, 255, 255)
 GREEN = (78, 255, 87)
 YELLOW = (241, 255, 0)
@@ -188,7 +188,6 @@ class EnemiesGroup(sprite.Group):
                 self.leftAddMove += 5
                 is_column_dead = self.is_column_dead(self._leftAliveColumn)
 
-
 class Blocker(sprite.Sprite):
     def __init__(self, size, color, row, column):
         sprite.Sprite.__init__(self)
@@ -203,7 +202,6 @@ class Blocker(sprite.Sprite):
 
     def update(self, keys, *args):
         game.screen.blit(self.image, self.rect)
-
 
 class Mystery(sprite.Sprite):
     def __init__(self):
@@ -236,7 +234,6 @@ class Mystery(sprite.Sprite):
         if passed > self.moveTime and resetTimer:
             self.timer = currentTime
 
-
 class EnemyExplosion(sprite.Sprite):
     def __init__(self, enemy, *groups):
         super(EnemyExplosion, self).__init__(*groups)
@@ -259,7 +256,6 @@ class EnemyExplosion(sprite.Sprite):
         elif 400 < passed:
             self.kill()
 
-
 class MysteryExplosion(sprite.Sprite):
     def __init__(self, mystery, score, *groups):
         super(MysteryExplosion, self).__init__(*groups)
@@ -273,7 +269,6 @@ class MysteryExplosion(sprite.Sprite):
             self.text.draw(game.screen)
         elif 600 < passed:
             self.kill()
-
 
 class ShipExplosion(sprite.Sprite):
     def __init__(self, ship, *groups):
@@ -289,7 +284,6 @@ class ShipExplosion(sprite.Sprite):
         elif 900 < passed:
             self.kill()
 
-
 class Life(sprite.Sprite):
     def __init__(self, xpos, ypos):
         sprite.Sprite.__init__(self)
@@ -300,7 +294,6 @@ class Life(sprite.Sprite):
     def update(self, *args):
         game.screen.blit(self.image, self.rect)
 
-
 class Text(object):
     def __init__(self, textFont, size, message, color, xpos, ypos):
         self.font = font.Font(textFont, size)
@@ -309,7 +302,6 @@ class Text(object):
 
     def draw(self, surface):
         surface.blit(self.surface, self.rect)
-
 
 class SpaceInvaders(object):
     def __init__(self):
@@ -562,7 +554,6 @@ class SpaceInvaders(object):
                 if back_button_hovered:
                     self.showingIntroduction = False
 
-
     def main(self):
         while True:
             if self.mainScreen:
@@ -588,7 +579,6 @@ class SpaceInvaders(object):
                             self.mainScreen = False
                         elif self.introductionButtonHovered:
                             self.showingintroduction = True
-
 
             elif self.startGame:
                 if not self.enemies and not self.explosionsGroup:
@@ -654,7 +644,6 @@ class SpaceInvaders(object):
 
             display.update()
             self.clock.tick(60)
-
 
 if __name__ == '__main__':
     game = SpaceInvaders()
